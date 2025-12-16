@@ -1,0 +1,1238 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>MedLaunch Usability Study | Amen Hailu</title>
+    <link rel="preconnect" href="https://fonts.googleapis.com">
+    <link rel="preconnect" href="https://fonts.gstatic.com" crossorigin>
+    <link href="https://fonts.googleapis.com/css2?family=Instrument+Serif:ital@0;1&family=DM+Sans:ital,opsz,wght@0,9..40,300..700;1,9..40,300..700&display=swap" rel="stylesheet">
+    <style>
+        :root {
+            --bg-primary: #0a0a0a;
+            --bg-secondary: #141414;
+            --bg-tertiary: #1a1a1a;
+            --text-primary: #f5f5f5;
+            --text-secondary: #a0a0a0;
+            --text-muted: #666;
+            --accent-blue: #2563eb;
+            --accent-coral: #ff6b4a;
+            --accent-mint: #34d399;
+            --accent-gold: #fbbf24;
+            --serif: 'Instrument Serif', Georgia, serif;
+            --sans: 'DM Sans', -apple-system, sans-serif;
+            --border-subtle: rgba(255,255,255,0.08);
+        }
+
+        * {
+            margin: 0;
+            padding: 0;
+            box-sizing: border-box;
+        }
+
+        html {
+            scroll-behavior: smooth;
+        }
+
+        body {
+            font-family: var(--sans);
+            background: var(--bg-primary);
+            color: var(--text-primary);
+            line-height: 1.7;
+            font-size: 17px;
+            overflow-x: hidden;
+        }
+
+        ::selection {
+            background: var(--accent-blue);
+            color: white;
+        }
+
+        /* Hero Section */
+        .hero {
+            min-height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: flex-end;
+            padding: 80px 60px;
+            position: relative;
+            background: linear-gradient(180deg, #0a0a0a 0%, #0f1419 100%);
+        }
+
+        .hero::before {
+            content: '';
+            position: absolute;
+            top: 0;
+            left: 0;
+            right: 0;
+            bottom: 0;
+            background: 
+                radial-gradient(ellipse 80% 50% at 20% 40%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
+                radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255, 107, 74, 0.06) 0%, transparent 50%);
+            pointer-events: none;
+        }
+
+        .hero-content {
+            position: relative;
+            z-index: 1;
+            max-width: 1400px;
+        }
+
+        .hero-eyebrow {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-coral);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .hero-title {
+            font-family: var(--serif);
+            font-size: clamp(3rem, 8vw, 6.5rem);
+            font-weight: 400;
+            line-height: 1.05;
+            margin-bottom: 40px;
+            max-width: 900px;
+        }
+
+        .hero-title em {
+            font-style: italic;
+            color: var(--accent-coral);
+        }
+
+        .hero-meta {
+            display: flex;
+            flex-wrap: wrap;
+            gap: 48px;
+            padding-top: 40px;
+            border-top: 1px solid var(--border-subtle);
+        }
+
+        .meta-item {
+            min-width: 150px;
+        }
+
+        .meta-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .meta-value {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* Navigation */
+        nav {
+            position: fixed;
+            top: 0;
+            left: 0;
+            right: 0;
+            z-index: 100;
+            padding: 24px 60px;
+            display: flex;
+            justify-content: space-between;
+            align-items: center;
+            mix-blend-mode: difference;
+        }
+
+        .nav-logo {
+            font-family: var(--serif);
+            font-size: 20px;
+            color: white;
+            text-decoration: none;
+        }
+
+        .nav-links {
+            display: flex;
+            gap: 32px;
+        }
+
+        .nav-links a {
+            font-size: 14px;
+            color: white;
+            text-decoration: none;
+            opacity: 0.7;
+            transition: opacity 0.3s;
+        }
+
+        .nav-links a:hover {
+            opacity: 1;
+        }
+
+        /* Section Styling */
+        section {
+            padding: 120px 60px;
+            max-width: 1400px;
+            margin: 0 auto;
+        }
+
+        .section-label {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 2px;
+            color: var(--accent-blue);
+            margin-bottom: 24px;
+            font-weight: 500;
+        }
+
+        .section-title {
+            font-family: var(--serif);
+            font-size: clamp(2rem, 4vw, 3.5rem);
+            font-weight: 400;
+            line-height: 1.2;
+            margin-bottom: 48px;
+            max-width: 800px;
+        }
+
+        .section-title em {
+            font-style: italic;
+            color: var(--accent-coral);
+        }
+
+        /* Overview Grid */
+        .overview-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 80px;
+            margin-top: 60px;
+        }
+
+        .overview-text {
+            font-size: 18px;
+            color: var(--text-secondary);
+            line-height: 1.8;
+        }
+
+        .overview-text p {
+            margin-bottom: 24px;
+        }
+
+        .overview-stats {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 40px;
+        }
+
+        .stat-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 32px;
+        }
+
+        .stat-number {
+            font-family: var(--serif);
+            font-size: 48px;
+            color: var(--text-primary);
+            margin-bottom: 8px;
+        }
+
+        .stat-label {
+            font-size: 14px;
+            color: var(--text-muted);
+            text-transform: uppercase;
+            letter-spacing: 1px;
+        }
+
+        /* Problem Section */
+        .problem-section {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 80px;
+            margin: 60px 0;
+        }
+
+        .quote-block {
+            font-family: var(--serif);
+            font-size: clamp(1.5rem, 3vw, 2.5rem);
+            font-style: italic;
+            color: var(--text-primary);
+            line-height: 1.4;
+            margin: 60px 0;
+            padding-left: 40px;
+            border-left: 3px solid var(--accent-coral);
+        }
+
+        .quote-source {
+            font-family: var(--sans);
+            font-size: 14px;
+            font-style: normal;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        /* Role Section */
+        .role-section {
+            border-top: 1px solid var(--border-subtle);
+            padding-top: 80px;
+            margin-top: 80px;
+        }
+
+        .role-grid {
+            display: grid;
+            grid-template-columns: 300px 1fr;
+            gap: 80px;
+            margin-top: 48px;
+        }
+
+        .role-list {
+            list-style: none;
+        }
+
+        .role-list li {
+            font-size: 15px;
+            color: var(--text-secondary);
+            padding: 16px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            display: flex;
+            align-items: flex-start;
+            gap: 12px;
+        }
+
+        .role-list li::before {
+            content: '→';
+            color: var(--accent-mint);
+            flex-shrink: 0;
+        }
+
+        .team-grid {
+            display: grid;
+            grid-template-columns: repeat(3, 1fr);
+            gap: 24px;
+        }
+
+        .team-member {
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px;
+        }
+
+        .team-member.highlight {
+            background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(255, 107, 74, 0.05));
+            border-color: var(--accent-blue);
+        }
+
+        .team-name {
+            font-size: 16px;
+            font-weight: 500;
+            margin-bottom: 4px;
+        }
+
+        .team-role {
+            font-size: 13px;
+            color: var(--text-muted);
+        }
+
+        /* Process Section */
+        .process-timeline {
+            position: relative;
+            margin: 80px 0;
+        }
+
+        .process-step {
+            display: grid;
+            grid-template-columns: 200px 1fr;
+            gap: 60px;
+            padding: 60px 0;
+            border-bottom: 1px solid var(--border-subtle);
+            position: relative;
+        }
+
+        .process-step:last-child {
+            border-bottom: none;
+        }
+
+        .step-number {
+            font-family: var(--serif);
+            font-size: 14px;
+            color: var(--accent-gold);
+            text-transform: uppercase;
+            letter-spacing: 2px;
+        }
+
+        .step-content h3 {
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 400;
+            margin-bottom: 20px;
+        }
+
+        .step-content p {
+            color: var(--text-secondary);
+            margin-bottom: 20px;
+        }
+
+        .decision-box {
+            background: var(--bg-tertiary);
+            border-left: 3px solid var(--accent-blue);
+            padding: 24px;
+            margin-top: 24px;
+            border-radius: 0 8px 8px 0;
+        }
+
+        .decision-label {
+            font-size: 11px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-blue);
+            margin-bottom: 12px;
+        }
+
+        .decision-text {
+            font-size: 15px;
+            color: var(--text-secondary);
+        }
+
+        /* Participants Section */
+        .participants-grid {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 20px;
+            margin-top: 48px;
+        }
+
+        .participant-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 12px;
+            padding: 24px;
+            transition: transform 0.3s, border-color 0.3s;
+        }
+
+        .participant-card:hover {
+            transform: translateY(-4px);
+            border-color: var(--accent-blue);
+        }
+
+        .participant-card.ideal {
+            background: linear-gradient(135deg, rgba(52, 211, 153, 0.08), transparent);
+            border-color: var(--accent-mint);
+        }
+
+        .participant-id {
+            font-size: 12px;
+            color: var(--text-muted);
+            margin-bottom: 8px;
+        }
+
+        .participant-role {
+            font-size: 15px;
+            font-weight: 500;
+            margin-bottom: 12px;
+        }
+
+        .participant-note {
+            font-size: 13px;
+            color: var(--text-secondary);
+            line-height: 1.5;
+        }
+
+        .ideal-badge {
+            display: inline-block;
+            background: var(--accent-mint);
+            color: var(--bg-primary);
+            font-size: 10px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            padding: 4px 8px;
+            border-radius: 4px;
+            margin-top: 12px;
+            font-weight: 600;
+        }
+
+        /* Results Section */
+        .results-hero {
+            text-align: center;
+            padding: 100px 0;
+        }
+
+        .results-score {
+            font-family: var(--serif);
+            font-size: 160px;
+            font-weight: 400;
+            color: var(--accent-coral);
+            line-height: 1;
+        }
+
+        .results-grade {
+            font-size: 24px;
+            color: var(--text-muted);
+            margin-top: 16px;
+        }
+
+        .results-label {
+            font-size: 14px;
+            color: var(--text-secondary);
+            margin-top: 8px;
+        }
+
+        .task-results {
+            display: grid;
+            grid-template-columns: repeat(4, 1fr);
+            gap: 24px;
+            margin: 80px 0;
+        }
+
+        .task-card {
+            background: var(--bg-secondary);
+            border: 1px solid var(--border-subtle);
+            border-radius: 16px;
+            padding: 32px;
+            text-align: center;
+        }
+
+        .task-name {
+            font-size: 13px;
+            text-transform: uppercase;
+            letter-spacing: 1px;
+            color: var(--text-muted);
+            margin-bottom: 16px;
+        }
+
+        .task-rate {
+            font-family: var(--serif);
+            font-size: 48px;
+            margin-bottom: 8px;
+        }
+
+        .task-rate.low {
+            color: var(--accent-coral);
+        }
+
+        .task-rate.high {
+            color: var(--accent-mint);
+        }
+
+        .task-description {
+            font-size: 14px;
+            color: var(--text-secondary);
+        }
+
+        /* Findings */
+        .finding {
+            background: var(--bg-secondary);
+            border-radius: 24px;
+            padding: 60px;
+            margin: 40px 0;
+        }
+
+        .finding-header {
+            display: flex;
+            align-items: flex-start;
+            gap: 24px;
+            margin-bottom: 40px;
+        }
+
+        .finding-number {
+            font-family: var(--serif);
+            font-size: 48px;
+            color: var(--accent-coral);
+            line-height: 1;
+        }
+
+        .finding-title {
+            font-family: var(--serif);
+            font-size: 28px;
+            font-weight: 400;
+            flex: 1;
+        }
+
+        .finding-content {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+        }
+
+        .finding-problem h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-coral);
+            margin-bottom: 16px;
+        }
+
+        .finding-solution h4 {
+            font-size: 12px;
+            text-transform: uppercase;
+            letter-spacing: 1.5px;
+            color: var(--accent-mint);
+            margin-bottom: 16px;
+        }
+
+        .finding-text {
+            color: var(--text-secondary);
+            font-size: 15px;
+            line-height: 1.8;
+        }
+
+        .finding-image {
+            margin-top: 40px;
+            border-radius: 12px;
+            overflow: hidden;
+            background: var(--bg-tertiary);
+            padding: 20px;
+        }
+
+        .finding-image img {
+            width: 100%;
+            border-radius: 8px;
+        }
+
+        .image-caption {
+            font-size: 13px;
+            color: var(--text-muted);
+            margin-top: 12px;
+            text-align: center;
+        }
+
+        /* Affinity Diagram */
+        .affinity-section {
+            margin: 80px 0;
+        }
+
+        .affinity-image {
+            background: var(--bg-secondary);
+            border-radius: 16px;
+            padding: 40px;
+            margin-top: 40px;
+        }
+
+        .affinity-image img {
+            width: 100%;
+            border-radius: 8px;
+            opacity: 0.9;
+        }
+
+        /* Conclusion */
+        .conclusion-section {
+            background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
+            border-radius: 24px;
+            padding: 80px;
+            margin-top: 80px;
+        }
+
+        .conclusion-grid {
+            display: grid;
+            grid-template-columns: 1fr 1fr;
+            gap: 60px;
+            margin-top: 48px;
+        }
+
+        .conclusion-item h4 {
+            font-family: var(--serif);
+            font-size: 20px;
+            margin-bottom: 16px;
+        }
+
+        .conclusion-item p {
+            color: var(--text-secondary);
+            font-size: 15px;
+        }
+
+        /* Links */
+        .links-section {
+            display: flex;
+            gap: 24px;
+            margin-top: 60px;
+        }
+
+        .doc-link {
+            display: inline-flex;
+            align-items: center;
+            gap: 12px;
+            background: var(--bg-tertiary);
+            border: 1px solid var(--border-subtle);
+            padding: 16px 24px;
+            border-radius: 8px;
+            color: var(--text-primary);
+            text-decoration: none;
+            font-size: 14px;
+            transition: all 0.3s;
+        }
+
+        .doc-link:hover {
+            background: var(--accent-blue);
+            border-color: var(--accent-blue);
+            transform: translateY(-2px);
+        }
+
+        .doc-link svg {
+            width: 20px;
+            height: 20px;
+        }
+
+        /* Footer */
+        footer {
+            padding: 60px;
+            border-top: 1px solid var(--border-subtle);
+            text-align: center;
+        }
+
+        .footer-text {
+            font-size: 14px;
+            color: var(--text-muted);
+        }
+
+        .footer-text a {
+            color: var(--text-secondary);
+            text-decoration: none;
+        }
+
+        .footer-text a:hover {
+            color: var(--text-primary);
+        }
+
+        /* Responsive */
+        @media (max-width: 1024px) {
+            .hero, section {
+                padding-left: 40px;
+                padding-right: 40px;
+            }
+
+            .overview-grid,
+            .role-grid,
+            .finding-content,
+            .conclusion-grid {
+                grid-template-columns: 1fr;
+                gap: 40px;
+            }
+
+            .process-step {
+                grid-template-columns: 1fr;
+                gap: 16px;
+            }
+
+            .participants-grid {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .task-results {
+                grid-template-columns: repeat(2, 1fr);
+            }
+
+            .team-grid {
+                grid-template-columns: 1fr;
+            }
+        }
+
+        @media (max-width: 640px) {
+            .hero, section {
+                padding-left: 24px;
+                padding-right: 24px;
+            }
+
+            nav {
+                padding: 16px 24px;
+            }
+
+            .hero-meta {
+                flex-direction: column;
+                gap: 24px;
+            }
+
+            .participants-grid,
+            .task-results,
+            .overview-stats {
+                grid-template-columns: 1fr;
+            }
+
+            .problem-section,
+            .finding,
+            .conclusion-section {
+                padding: 40px 24px;
+            }
+
+            .links-section {
+                flex-direction: column;
+            }
+        }
+
+        /* Animations */
+        @keyframes fadeUp {
+            from {
+                opacity: 0;
+                transform: translateY(30px);
+            }
+            to {
+                opacity: 1;
+                transform: translateY(0);
+            }
+        }
+
+        .animate-in {
+            animation: fadeUp 0.8s ease-out forwards;
+        }
+
+        .delay-1 { animation-delay: 0.1s; }
+        .delay-2 { animation-delay: 0.2s; }
+        .delay-3 { animation-delay: 0.3s; }
+        .delay-4 { animation-delay: 0.4s; }
+    </style>
+</head>
+<body>
+    <nav>
+        <a href="#" class="nav-logo">Amen Hailu</a>
+        <div class="nav-links">
+            <a href="#overview">Overview</a>
+            <a href="#process">Process</a>
+            <a href="#results">Results</a>
+            <a href="#conclusion">Conclusion</a>
+        </div>
+    </nav>
+
+    <header class="hero">
+        <div class="hero-content">
+            <p class="hero-eyebrow animate-in">User Research Case Study</p>
+            <h1 class="hero-title animate-in delay-1">
+                Transforming Healthcare Compliance Through <em>User-Centered Design</em>
+            </h1>
+            <div class="hero-meta animate-in delay-2">
+                <div class="meta-item">
+                    <p class="meta-label">Client</p>
+                    <p class="meta-value">MedLaunch Concepts</p>
+                </div>
+                <div class="meta-item">
+                    <p class="meta-label">Timeline</p>
+                    <p class="meta-value">Fall 2025 · 8 Weeks</p>
+                </div>
+                <div class="meta-item">
+                    <p class="meta-label">Methods</p>
+                    <p class="meta-value">Moderated Usability Testing</p>
+                </div>
+                <div class="meta-item">
+                    <p class="meta-label">My Role</p>
+                    <p class="meta-value">Lead Researcher & Coordinator</p>
+                </div>
+            </div>
+        </div>
+    </header>
+
+    <section id="overview">
+        <p class="section-label">The Challenge</p>
+        <h2 class="section-title">
+            A legacy system described as <em>"impossible to track"</em> was failing the healthcare professionals it was meant to serve.
+        </h2>
+        
+        <div class="overview-grid">
+            <div class="overview-text">
+                <p>
+                    MedLaunch Concepts is a healthcare technology startup developing the DNV Healthcare Portal—a comprehensive platform designed to replace outdated accreditation systems that have long frustrated hospital surveyors and compliance officers.
+                </p>
+                <p>
+                    The existing system was plagued by abandoned forms, manual workarounds, and workflows that felt like obstacles rather than tools. Users frequently gave up mid-task, resorting to pen and paper to get their jobs done.
+                </p>
+                <p>
+                    Our mission was clear: evaluate the new portal's usability and identify the friction points preventing users from completing their critical work—work that ultimately impacts patient safety.
+                </p>
+            </div>
+            <div class="overview-stats">
+                <div class="stat-card">
+                    <p class="stat-number">8</p>
+                    <p class="stat-label">Test Sessions</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">4</p>
+                    <p class="stat-label">Core Tasks</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">75 min</p>
+                    <p class="stat-label">Avg. Session</p>
+                </div>
+                <div class="stat-card">
+                    <p class="stat-number">3</p>
+                    <p class="stat-label">Key Findings</p>
+                </div>
+            </div>
+        </div>
+
+        <div class="problem-section">
+            <blockquote class="quote-block">
+                "Like there's nothing that's kind of like leading me as to how to use the tool or what to do first."
+                <p class="quote-source">— Participant 1, during survey creation task</p>
+            </blockquote>
+        </div>
+
+        <div class="role-section" id="role">
+            <p class="section-label">My Role</p>
+            <h3 class="section-title">Leading research from <em>recruitment</em> to <em>final delivery</em></h3>
+            
+            <div class="role-grid">
+                <div>
+                    <h4 style="font-size: 18px; margin-bottom: 24px; color: var(--text-primary);">My Contributions</h4>
+                    <ul class="role-list">
+                        <li>Designed and deployed the participant screener survey</li>
+                        <li>Authored the complete testing script and reference materials</li>
+                        <li>Served as primary client liaison throughout the project</li>
+                        <li>Coordinated team workflow and deliverable timelines</li>
+                        <li>Moderated sessions with P3 & P4—the only ideal-profile participants</li>
+                        <li>Led agenda page design recommendations</li>
+                        <li>Authored and compiled the final 32-page report</li>
+                    </ul>
+                </div>
+                <div>
+                    <h4 style="font-size: 18px; margin-bottom: 24px; color: var(--text-primary);">The Team</h4>
+                    <div class="team-grid">
+                        <div class="team-member highlight">
+                            <p class="team-name">Amen Hailu</p>
+                            <p class="team-role">Lead Researcher, Client Liaison, Report Author</p>
+                        </div>
+                        <div class="team-member">
+                            <p class="team-name">Arsh Kaushik</p>
+                            <p class="team-role">UX Researcher</p>
+                        </div>
+                        <div class="team-member">
+                            <p class="team-name">Mars Nevada</p>
+                            <p class="team-role">UX Researcher</p>
+                        </div>
+                        <div class="team-member">
+                            <p class="team-name">Shlok Belgamwar</p>
+                            <p class="team-role">UX Researcher</p>
+                        </div>
+                    </div>
+                </div>
+            </div>
+        </div>
+    </section>
+
+    <section id="process">
+        <p class="section-label">Our Approach</p>
+        <h2 class="section-title">
+            From stakeholder kickoff to <em>actionable recommendations</em>
+        </h2>
+
+        <div class="process-timeline">
+            <div class="process-step">
+                <p class="step-number">Phase 01</p>
+                <div class="step-content">
+                    <h3>Stakeholder Discovery</h3>
+                    <p>
+                        I initiated contact with Robert Dostert, MedLaunch's project manager, to understand the product landscape. The platform serves two distinct user groups: hospital-side users (quality directors, compliance officers) and DNV-side users (accreditation surveyors).
+                    </p>
+                    <p>
+                        Key insight from our kickoff: users were "not technical, used to pen and paper." This informed our entire approach—we needed to test whether the digital experience could match the simplicity of analog workflows.
+                    </p>
+                    <div class="decision-box">
+                        <p class="decision-label">Strategic Decision</p>
+                        <p class="decision-text">We focused on the Surveyor Tool component—the most complex and friction-heavy part of the platform—rather than spreading thin across all features.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <p class="step-number">Phase 02</p>
+                <div class="step-content">
+                    <h3>Participant Recruitment</h3>
+                    <p>
+                        I designed a screening survey targeting healthcare professionals with accreditation experience (ages 25-64). While we attempted to use Pratt's Private Panels partnership, the specialized nature of our target users made recruitment challenging.
+                    </p>
+                    <p>
+                        We ultimately recruited 8 participants through professional networks, including two ideal candidates—P3 (Clinical Psychology PhD with healthcare research experience) and P4 (Healthcare Attorney with RN background)—whom I personally interviewed.
+                    </p>
+                    <div class="decision-box">
+                        <p class="decision-label">Methodological Consideration</p>
+                        <p class="decision-text">While proxy participants (project managers, product designers) couldn't fully represent end users, their experience with regulated workflows and enterprise software provided valuable comparative insights.</p>
+                    </div>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <p class="step-number">Phase 03</p>
+                <div class="step-content">
+                    <h3>Test Design & Execution</h3>
+                    <p>
+                        I authored a comprehensive testing script with a realistic scenario: participants would set up and conduct an internal audit for the emergency department at a fictitious hospital. This grounded abstract tasks in concrete, believable context.
+                    </p>
+                    <p>
+                        We employed concurrent think-aloud (CTA) and concurrent probing (CP) techniques across 60-75 minute remote sessions via Zoom. The four core tasks mapped directly to the surveyor workflow: create survey → build agenda → navigate control center → submit findings.
+                    </p>
+                </div>
+            </div>
+
+            <div class="process-step">
+                <p class="step-number">Phase 04</p>
+                <div class="step-content">
+                    <h3>Analysis & Synthesis</h3>
+                    <p>
+                        After completing all sessions, we conducted affinity mapping to cluster observations into themes. Patterns emerged quickly: terminology confusion, hidden call-to-actions, and inflexible workflows appeared across nearly every session.
+                    </p>
+                    <p>
+                        I led the synthesis process, reviewing recordings, compiling observational notes, and translating recurring pain points into specific, implementable design recommendations.
+                    </p>
+                    <div class="decision-box">
+                        <p class="decision-label">Scope Decision</p>
+                        <p class="decision-text">Rather than overwhelm the client with mockups for every minor issue, we focused on four pages requiring major reconstruction: Survey Page, Agenda, and Submissions. When the client informed us they were already addressing dashboard concerns, we pivoted to capture those insights in an "Additional Findings" appendix.</p>
+                    </div>
+                </div>
+            </div>
+        </div>
+
+        <div class="affinity-section">
+            <h3 style="font-family: var(--serif); font-size: 24px; margin-bottom: 16px;">Affinity Mapping</h3>
+            <p style="color: var(--text-secondary); margin-bottom: 24px;">Our synthesis process organized 100+ observations into thematic clusters, revealing the systemic nature of usability issues.</p>
+            <div class="affinity-image">
+                <img src="data:image/svg+xml,%3Csvg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 800 400'%3E%3Crect fill='%231a1a1a' width='800' height='400'/%3E%3Ctext fill='%23666' x='400' y='200' text-anchor='middle' font-family='sans-serif' font-size='14'%3EAffinity Diagram - Thematic Analysis%3C/text%3E%3C/svg%3E" alt="Affinity diagram showing clustered user feedback">
+                <p class="image-caption">Color-coded clusters represent different usability themes identified across all sessions</p>
+            </div>
+        </div>
+
+        <h3 style="font-family: var(--serif); font-size: 28px; margin: 60px 0 32px;">Participant Profiles</h3>
+        <p style="color: var(--text-secondary); margin-bottom: 32px;">Eight participants spanning healthcare, project management, and product design backgrounds.</p>
+        
+        <div class="participants-grid">
+            <div class="participant-card">
+                <p class="participant-id">P1</p>
+                <p class="participant-role">Project Manager</p>
+                <p class="participant-note">20+ years in NYC advertising with QC testing expertise</p>
+            </div>
+            <div class="participant-card">
+                <p class="participant-id">P2</p>
+                <p class="participant-role">Project Manager</p>
+                <p class="participant-note">Health & wellness advertising experience</p>
+            </div>
+            <div class="participant-card ideal">
+                <p class="participant-id">P3</p>
+                <p class="participant-role">Clinical Psychology PhD</p>
+                <p class="participant-note">4-7 years in healthcare research at NYU Langone</p>
+                <span class="ideal-badge">Ideal Candidate</span>
+            </div>
+            <div class="participant-card ideal">
+                <p class="participant-id">P4</p>
+                <p class="participant-role">Healthcare Attorney</p>
+                <p class="participant-note">Former RN, 8+ years in healthcare regulatory work</p>
+                <span class="ideal-badge">Ideal Candidate</span>
+            </div>
+            <div class="participant-card">
+                <p class="participant-id">P5</p>
+                <p class="participant-role">Project Manager</p>
+                <p class="participant-note">Software development at healthcare startup</p>
+            </div>
+            <div class="participant-card">
+                <p class="participant-id">P6</p>
+                <p class="participant-role">Former Project Manager</p>
+                <p class="participant-note">Game design background, workflow analysis expertise</p>
+            </div>
+            <div class="participant-card">
+                <p class="participant-id">P7</p>
+                <p class="participant-role">Product Designer</p>
+                <p class="participant-note">Freelances for healthcare compliance startup</p>
+            </div>
+            <div class="participant-card">
+                <p class="participant-id">P8</p>
+                <p class="participant-role">Senior Product Designer</p>
+                <p class="participant-note">Enterprise tools at Uber, healthcare startup contracts</p>
+            </div>
+        </div>
+    </section>
+
+    <section id="results">
+        <p class="section-label">What We Found</p>
+        <h2 class="section-title">
+            A usability score that revealed <em>significant room for improvement</em>
+        </h2>
+
+        <div class="results-hero">
+            <p class="results-score">59.4</p>
+            <p class="results-grade">Grade D — Below Industry Average</p>
+            <p class="results-label">Product Usability Scale Score</p>
+        </div>
+
+        <div class="task-results">
+            <div class="task-card">
+                <p class="task-name">Task 1</p>
+                <p class="task-rate high">75%</p>
+                <p class="task-description">Survey Creation</p>
+            </div>
+            <div class="task-card">
+                <p class="task-name">Task 2</p>
+                <p class="task-rate low">25%</p>
+                <p class="task-description">Agenda Management</p>
+            </div>
+            <div class="task-card">
+                <p class="task-name">Task 3</p>
+                <p class="task-rate high">62.5%</p>
+                <p class="task-description">Control Center Navigation</p>
+            </div>
+            <div class="task-card">
+                <p class="task-name">Task 4</p>
+                <p class="task-rate high">87.5%</p>
+                <p class="task-description">Entry Form Submission</p>
+            </div>
+        </div>
+
+        <div class="finding">
+            <div class="finding-header">
+                <span class="finding-number">01</span>
+                <h3 class="finding-title">Survey Creation: Lost at the Starting Line</h3>
+            </div>
+            <div class="finding-content">
+                <div class="finding-problem">
+                    <h4>The Problem</h4>
+                    <p class="finding-text">
+                        Users couldn't find where to begin. Despite a visible "Schedule Survey" button, the terminology created confusion—scheduling implies managing deployment time, not creation. The button's nested placement and identical color to table headers made it feel insignificant.
+                        <br><br>
+                        <em>"I'm looking for a 'Start' button..."</em> — P5
+                    </p>
+                </div>
+                <div class="finding-solution">
+                    <h4>Our Recommendation</h4>
+                    <p class="finding-text">
+                        Implement a stepped workflow indicator showing users exactly where they are in the survey creation process. Replace "Schedule Survey" with "Create Survey" and establish clear visual hierarchy through color differentiation and prominent CTA placement.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="finding">
+            <div class="finding-header">
+                <span class="finding-number">02</span>
+                <h3 class="finding-title">Agenda Management: The 25% Problem</h3>
+            </div>
+            <div class="finding-content">
+                <div class="finding-problem">
+                    <h4>The Problem</h4>
+                    <p class="finding-text">
+                        With only 25% task success, agenda management was the biggest failure point. The single-day view lacked temporal context for 3-5 day surveys. Rigid column assignments prevented real-world hand-offs between team members. No inline editing meant constant context-switching.
+                        <br><br>
+                        <em>"I can assign a person to the whole column but I don't know how I can assign a specific event to another person."</em> — P8
+                    </p>
+                </div>
+                <div class="finding-solution">
+                    <h4>Our Recommendation</h4>
+                    <p class="finding-text">
+                        Add Day/Week/Month view toggles for broader temporal context. Introduce priority star indicators for high-risk items. Enable draggable task cards for dynamic reassignment. Implement quick-edit modals for in-context editing without losing visual context.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="finding">
+            <div class="finding-header">
+                <span class="finding-number">03</span>
+                <h3 class="finding-title">Submission & Entry Review: Duplicate Confusion</h3>
+            </div>
+            <div class="finding-content">
+                <div class="finding-problem">
+                    <h4>The Problem</h4>
+                    <p class="finding-text">
+                        "My Submissions" and "Entry Review" tabs confused 4 out of 8 users. The primary CTA didn't communicate its importance. Missing back navigation left users feeling lost. Two simultaneous information displays (table + card) increased cognitive load.
+                        <br><br>
+                        <em>"Those two things sound like the same thing to me."</em> — P7
+                    </p>
+                </div>
+                <div class="finding-solution">
+                    <h4>Our Recommendation</h4>
+                    <p class="finding-text">
+                        Consolidate into a single "Submissions" tab. Make the primary CTA visually prominent with proper blue fill. Add checkboxes for bulk actions and row-specific action menus. Change table header color to differentiate from interactive elements.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <blockquote class="quote-block" style="margin: 80px 0;">
+            "I like a sleek platform, and it's really aesthetically pleasing to the eye. What I really like about this is having the different columns."
+            <p class="quote-source">— Participant 3, noting the positive aspects of the interface</p>
+        </blockquote>
+    </section>
+
+    <section id="conclusion">
+        <p class="section-label">The Outcome</p>
+        <h2 class="section-title">
+            From insights to <em>implementation roadmap</em>
+        </h2>
+
+        <div class="conclusion-section">
+            <div class="conclusion-grid">
+                <div class="conclusion-item">
+                    <h4>Client Response</h4>
+                    <p>
+                        The MedLaunch team received our findings enthusiastically. Robert Dostert expressed that our solutions aligned with their development priorities and would be prioritized for near-term implementation. The design recommendations provided a clear path forward without requiring fundamental architectural changes.
+                    </p>
+                </div>
+                <div class="conclusion-item">
+                    <h4>Recommended Next Steps</h4>
+                    <p>
+                        Field testing is essential. Since surveyors use this tool while walking through hospitals—often with spotty connectivity—we recommended tablet-specific usability sessions in real clinical environments. The "QuickFind" feature for snapping photos and logging quick observations needs dedicated mobile testing.
+                    </p>
+                </div>
+                <div class="conclusion-item">
+                    <h4>Key Learnings</h4>
+                    <p>
+                        This project reinforced that domain expertise doesn't compensate for interface issues. Even our healthcare-background participants struggled with workflows. It also showed the value of strategic scope management—focusing deeply on critical pain points rather than cataloging every minor issue.
+                    </p>
+                </div>
+                <div class="conclusion-item">
+                    <h4>Impact Potential</h4>
+                    <p>
+                        Implementing these recommendations could realistically move the Product Usability Scale score from 59.4 (Grade D) to the 70-80 range (Grade B-C) within one to two development cycles—a meaningful improvement that translates directly to reduced training time and higher task completion rates for field auditors.
+                    </p>
+                </div>
+            </div>
+        </div>
+
+        <div class="links-section">
+            <a href="#" class="doc-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M9 12h6m-6 4h6m2 5H7a2 2 0 01-2-2V5a2 2 0 012-2h5.586a1 1 0 01.707.293l5.414 5.414a1 1 0 01.293.707V19a2 2 0 01-2 2z" />
+                </svg>
+                Full Research Report (PDF)
+            </a>
+            <a href="#" class="doc-link">
+                <svg xmlns="http://www.w3.org/2000/svg" fill="none" viewBox="0 0 24 24" stroke="currentColor">
+                    <path stroke-linecap="round" stroke-linejoin="round" stroke-width="2" d="M7 21h10a2 2 0 002-2V9.414a1 1 0 00-.293-.707l-5.414-5.414A1 1 0 0012.586 3H7a2 2 0 00-2 2v14a2 2 0 002 2z" />
+                </svg>
+                Presentation Slides
+            </a>
+        </div>
+    </section>
+
+    <footer>
+        <p class="footer-text">
+            Case study by <a href="#">Amen Hailu</a> · Pratt Institute · Fall 2025
+        </p>
+    </footer>
+
+    <script>
+        // Smooth scroll for navigation links
+        document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+            anchor.addEventListener('click', function (e) {
+                e.preventDefault();
+                const target = document.querySelector(this.getAttribute('href'));
+                if (target) {
+                    target.scrollIntoView({
+                        behavior: 'smooth',
+                        block: 'start'
+                    });
+                }
+            });
+        });
+
+        // Intersection Observer for fade-in animations
+        const observerOptions = {
+            threshold: 0.1,
+            rootMargin: '0px 0px -50px 0px'
+        };
+
+        const observer = new IntersectionObserver((entries) => {
+            entries.forEach(entry => {
+                if (entry.isIntersecting) {
+                    entry.target.style.opacity = '1';
+                    entry.target.style.transform = 'translateY(0)';
+                }
+            });
+        }, observerOptions);
+
+        document.querySelectorAll('section, .finding, .process-step').forEach(el => {
+            el.style.opacity = '0';
+            el.style.transform = 'translateY(30px)';
+            el.style.transition = 'opacity 0.6s ease-out, transform 0.6s ease-out';
+            observer.observe(el);
+        });
+    </script>
+</body>
+</html>
