@@ -396,6 +396,7 @@ section {
 
 .task-rate { font-family: var(--serif); font-size: 48px; margin-bottom: 8px; }
 .task-rate.low { color: var(--accent-coral); }
+.task-rate.mid { color: var(--accent-gold); }
 .task-rate.high { color: var(--accent-mint); }
 .task-description { font-size: 14px; color: var(--text-secondary); }
 
