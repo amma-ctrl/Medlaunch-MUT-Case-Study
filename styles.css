@@ -1,14 +1,8 @@
-/* ============================================
-   MedLaunch Case Study - Stylesheet
-   Author: Amen Hailu
-   ============================================ */
+/* MedLaunch Case Study - Amen Hailu */
 
-/* ============================================
-   CSS Variables & Theme
-   ============================================ */
 :root {
     --bg-primary: #0a0a0a;
-    --bg-secondary: #141414;
+    --bg-secondary: #111111;
     --bg-tertiary: #1a1a1a;
     --text-primary: #f5f5f5;
     --text-secondary: #a0a0a0;
@@ -22,18 +16,8 @@
     --border-subtle: rgba(255,255,255,0.08);
 }
 
-/* ============================================
-   Reset & Base Styles
-   ============================================ */
-* {
-    margin: 0;
-    padding: 0;
-    box-sizing: border-box;
-}
-
-html {
-    scroll-behavior: smooth;
-}
+* { margin: 0; padding: 0; box-sizing: border-box; }
+html { scroll-behavior: smooth; }
 
 body {
     font-family: var(--sans);
@@ -41,17 +25,11 @@ body {
     color: var(--text-primary);
     line-height: 1.7;
     font-size: 17px;
-    overflow-x: hidden;
 }
 
-::selection {
-    background: var(--accent-blue);
-    color: white;
-}
+::selection { background: var(--accent-blue); color: white; }
 
-/* ============================================
-   Navigation
-   ============================================ */
+/* Navigation */
 nav {
     position: fixed;
     top: 0;
@@ -72,11 +50,7 @@ nav {
     text-decoration: none;
 }
 
-.nav-links {
-    display: flex;
-    gap: 32px;
-}
-
+.nav-links { display: flex; gap: 32px; }
 .nav-links a {
     font-size: 14px;
     color: white;
@@ -84,14 +58,9 @@ nav {
     opacity: 0.7;
     transition: opacity 0.3s;
 }
+.nav-links a:hover { opacity: 1; }
 
-.nav-links a:hover {
-    opacity: 1;
-}
-
-/* ============================================
-   Hero Section
-   ============================================ */
+/* Hero */
 .hero {
     min-height: 100vh;
     display: flex;
@@ -105,21 +74,14 @@ nav {
 .hero::before {
     content: '';
     position: absolute;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: 
         radial-gradient(ellipse 80% 50% at 20% 40%, rgba(37, 99, 235, 0.08) 0%, transparent 50%),
         radial-gradient(ellipse 60% 40% at 80% 60%, rgba(255, 107, 74, 0.06) 0%, transparent 50%);
     pointer-events: none;
 }
 
-.hero-content {
-    position: relative;
-    z-index: 1;
-    max-width: 1400px;
-}
+.hero-content { position: relative; z-index: 1; max-width: 1400px; }
 
 .hero-eyebrow {
     font-size: 13px;
@@ -127,22 +89,18 @@ nav {
     letter-spacing: 2px;
     color: var(--accent-coral);
     margin-bottom: 24px;
-    font-weight: 500;
 }
 
 .hero-title {
     font-family: var(--serif);
-    font-size: clamp(3rem, 8vw, 6.5rem);
+    font-size: clamp(3rem, 8vw, 6rem);
     font-weight: 400;
     line-height: 1.05;
     margin-bottom: 40px;
     max-width: 900px;
 }
 
-.hero-title em {
-    font-style: italic;
-    color: var(--accent-coral);
-}
+.hero-title em { font-style: italic; color: var(--accent-coral); }
 
 .hero-meta {
     display: flex;
@@ -152,10 +110,7 @@ nav {
     border-top: 1px solid var(--border-subtle);
 }
 
-.meta-item {
-    min-width: 150px;
-}
-
+.meta-item { min-width: 150px; }
 .meta-label {
     font-size: 11px;
     text-transform: uppercase;
@@ -163,15 +118,9 @@ nav {
     color: var(--text-muted);
     margin-bottom: 8px;
 }
+.meta-value { font-size: 15px; color: var(--text-secondary); }
 
-.meta-value {
-    font-size: 15px;
-    color: var(--text-secondary);
-}
-
-/* ============================================
-   Section Styling
-   ============================================ */
+/* Sections */
 section {
     padding: 120px 60px;
     max-width: 1400px;
@@ -184,7 +133,6 @@ section {
     letter-spacing: 2px;
     color: var(--accent-blue);
     margin-bottom: 24px;
-    font-weight: 500;
 }
 
 .section-title {
@@ -196,14 +144,9 @@ section {
     max-width: 800px;
 }
 
-.section-title em {
-    font-style: italic;
-    color: var(--accent-coral);
-}
+.section-title em { font-style: italic; color: var(--accent-coral); }
 
-/* ============================================
-   Overview Grid
-   ============================================ */
+/* Overview Grid */
 .overview-grid {
     display: grid;
     grid-template-columns: 1fr 1fr;
@@ -211,21 +154,10 @@ section {
     margin-top: 60px;
 }
 
-.overview-text {
-    font-size: 18px;
-    color: var(--text-secondary);
-    line-height: 1.8;
-}
+.overview-text { font-size: 18px; color: var(--text-secondary); line-height: 1.8; }
+.overview-text p { margin-bottom: 24px; }
 
-.overview-text p {
-    margin-bottom: 24px;
-}
-
-.overview-stats {
-    display: grid;
-    grid-template-columns: 1fr 1fr;
-    gap: 40px;
-}
+.overview-stats { display: grid; grid-template-columns: 1fr 1fr; gap: 40px; }
 
 .stat-card {
     background: var(--bg-secondary);
@@ -234,33 +166,13 @@ section {
     padding: 32px;
 }
 
-.stat-number {
-    font-family: var(--serif);
-    font-size: 48px;
-    color: var(--text-primary);
-    margin-bottom: 8px;
-}
+.stat-number { font-family: var(--serif); font-size: 48px; margin-bottom: 8px; }
+.stat-label { font-size: 14px; color: var(--text-muted); text-transform: uppercase; letter-spacing: 1px; }
 
-.stat-label {
-    font-size: 14px;
-    color: var(--text-muted);
-    text-transform: uppercase;
-    letter-spacing: 1px;
-}
-
-/* ============================================
-   Problem Section
-   ============================================ */
-.problem-section {
-    background: var(--bg-secondary);
-    border-radius: 24px;
-    padding: 80px;
-    margin: 60px 0;
-}
-
+/* Quote Block */
 .quote-block {
     font-family: var(--serif);
-    font-size: clamp(1.5rem, 3vw, 2.5rem);
+    font-size: clamp(1.5rem, 3vw, 2.2rem);
     font-style: italic;
     color: var(--text-primary);
     line-height: 1.4;
@@ -277,9 +189,7 @@ section {
     margin-top: 16px;
 }
 
-/* ============================================
-   Role Section
-   ============================================ */
+/* Role Section */
 .role-section {
     border-top: 1px solid var(--border-subtle);
     padding-top: 80px;
@@ -288,15 +198,12 @@ section {
 
 .role-grid {
     display: grid;
-    grid-template-columns: 300px 1fr;
+    grid-template-columns: 1fr 1fr;
     gap: 80px;
     margin-top: 48px;
 }
 
-.role-list {
-    list-style: none;
-}
-
+.role-list { list-style: none; }
 .role-list li {
     font-size: 15px;
     color: var(--text-secondary);
@@ -306,62 +213,36 @@ section {
     align-items: flex-start;
     gap: 12px;
 }
+.role-list li::before { content: '→'; color: var(--accent-mint); flex-shrink: 0; }
 
-.role-list li::before {
-    content: '→';
-    color: var(--accent-mint);
-    flex-shrink: 0;
-}
-
-.team-grid {
-    display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 24px;
-}
+.team-grid { display: grid; grid-template-columns: 1fr 1fr; gap: 16px; }
 
 .team-member {
     background: var(--bg-tertiary);
     border: 1px solid var(--border-subtle);
     border-radius: 12px;
-    padding: 24px;
+    padding: 20px;
 }
 
 .team-member.highlight {
     background: linear-gradient(135deg, rgba(37, 99, 235, 0.1), rgba(255, 107, 74, 0.05));
     border-color: var(--accent-blue);
+    grid-column: span 2;
 }
 
-.team-name {
-    font-size: 16px;
-    font-weight: 500;
-    margin-bottom: 4px;
-}
+.team-name { font-size: 16px; font-weight: 500; margin-bottom: 4px; }
+.team-role { font-size: 13px; color: var(--text-muted); }
 
-.team-role {
-    font-size: 13px;
-    color: var(--text-muted);
-}
-
-/* ============================================
-   Process Section
-   ============================================ */
-.process-timeline {
-    position: relative;
-    margin: 80px 0;
-}
-
+/* Process Timeline */
 .process-step {
     display: grid;
     grid-template-columns: 200px 1fr;
     gap: 60px;
     padding: 60px 0;
     border-bottom: 1px solid var(--border-subtle);
-    position: relative;
 }
 
-.process-step:last-child {
-    border-bottom: none;
-}
+.process-step:last-child { border-bottom: none; }
 
 .step-number {
     font-family: var(--serif);
@@ -378,10 +259,7 @@ section {
     margin-bottom: 20px;
 }
 
-.step-content p {
-    color: var(--text-secondary);
-    margin-bottom: 20px;
-}
+.step-content p { color: var(--text-secondary); margin-bottom: 20px; }
 
 .decision-box {
     background: var(--bg-tertiary);
@@ -399,81 +277,47 @@ section {
     margin-bottom: 12px;
 }
 
-.decision-text {
-    font-size: 15px;
-    color: var(--text-secondary);
-}
+.decision-text { font-size: 15px; color: var(--text-secondary); }
 
-/* ============================================
-   Affinity Mapping Gallery
-   ============================================ */
-.affinity-section {
-    margin: 80px 0;
-}
+/* Affinity Gallery */
+.affinity-section { margin: 80px 0; }
 
 .affinity-grid {
     display: grid;
-    grid-template-columns: repeat(3, 1fr);
-    gap: 16px;
+    grid-template-columns: repeat(2, 1fr);
+    gap: 24px;
     margin-top: 40px;
 }
 
 .affinity-card {
-    position: relative;
-    border-radius: 12px;
+    background: transparent;
+    border-radius: 16px;
     overflow: hidden;
     cursor: pointer;
     transition: transform 0.3s, box-shadow 0.3s;
-    aspect-ratio: 16/10;
-    background: var(--bg-secondary);
 }
 
 .affinity-card:hover {
-    transform: translateY(-4px);
-    box-shadow: 0 20px 40px rgba(0,0,0,0.4);
+    transform: translateY(-8px);
+    box-shadow: 0 24px 48px rgba(0,0,0,0.4);
 }
 
 .affinity-card img {
     width: 100%;
-    height: 100%;
-    object-fit: cover;
-    transition: transform 0.3s;
+    height: auto;
+    display: block;
 }
 
-.affinity-card:hover img {
-    transform: scale(1.05);
-}
-
-.affinity-card-overlay {
-    position: absolute;
-    bottom: 0;
-    left: 0;
-    right: 0;
-    padding: 20px;
-    background: linear-gradient(transparent, rgba(0,0,0,0.8));
-    opacity: 0;
-    transition: opacity 0.3s;
-}
-
-.affinity-card:hover .affinity-card-overlay {
-    opacity: 1;
-}
-
-.affinity-card-title {
+.affinity-card-label {
+    padding: 16px 0;
     font-size: 14px;
     font-weight: 500;
-    color: white;
+    color: var(--text-secondary);
 }
 
-/* Full row card */
-.affinity-card.full-row {
-    grid-column: span 3;
-    aspect-ratio: 48/10;
-}
+.affinity-card.wide { grid-column: span 2; }
 
-/* ============================================
-   Participants Section
-   ============================================ */
+/* Participants */
 .participants-grid {
     display: grid;
     grid-template-columns: repeat(4, 1fr);
@@ -486,36 +330,19 @@ section {
     border: 1px solid var(--border-subtle);
     border-radius: 12px;
     padding: 24px;
-    transition: transform 0.3s, border-color 0.3s;
+    transition: transform 0.3s;
 }
 
-.participant-card:hover {
-    transform: translateY(-4px);
-    border-color: var(--accent-blue);
-}
+.participant-card:hover { transform: translateY(-4px); }
 
 .participant-card.ideal {
     background: linear-gradient(135deg, rgba(52, 211, 153, 0.08), transparent);
     border-color: var(--accent-mint);
 }
 
-.participant-id {
-    font-size: 12px;
-    color: var(--text-muted);
-    margin-bottom: 8px;
-}
-
-.participant-role {
-    font-size: 15px;
-    font-weight: 500;
-    margin-bottom: 12px;
-}
-
-.participant-note {
-    font-size: 13px;
-    color: var(--text-secondary);
-    line-height: 1.5;
-}
+.participant-id { font-size: 12px; color: var(--text-muted); margin-bottom: 8px; }
+.participant-role { font-size: 15px; font-weight: 500; margin-bottom: 12px; }
+.participant-note { font-size: 13px; color: var(--text-secondary); line-height: 1.5; }
 
 .ideal-badge {
     display: inline-block;
@@ -530,13 +357,8 @@ section {
     font-weight: 600;
 }
 
-/* ============================================
-   Results Section
-   ============================================ */
-.results-hero {
-    text-align: center;
-    padding: 100px 0;
-}
+/* Results */
+.results-hero { text-align: center; padding: 100px 0; }
 
 .results-score {
     font-family: var(--serif);
@@ -546,17 +368,8 @@ section {
     line-height: 1;
 }
 
-.results-grade {
-    font-size: 24px;
-    color: var(--text-muted);
-    margin-top: 16px;
-}
-
-.results-label {
-    font-size: 14px;
-    color: var(--text-secondary);
-    margin-top: 8px;
-}
+.results-grade { font-size: 24px; color: var(--text-muted); margin-top: 16px; }
+.results-label { font-size: 14px; color: var(--text-secondary); margin-top: 8px; }
 
 .task-results {
     display: grid;
@@ -581,69 +394,80 @@ section {
     margin-bottom: 16px;
 }
 
-.task-rate {
-    font-family: var(--serif);
-    font-size: 48px;
-    margin-bottom: 8px;
+.task-rate { font-family: var(--serif); font-size: 48px; margin-bottom: 8px; }
+.task-rate.low { color: var(--accent-coral); }
+.task-rate.high { color: var(--accent-mint); }
+.task-description { font-size: 14px; color: var(--text-secondary); }
+
+/* Team Note */
+.team-note {
+    background: rgba(37, 99, 235, 0.08);
+    border: 1px solid rgba(37, 99, 235, 0.2);
+    border-radius: 12px;
+    padding: 24px 28px;
+    margin: 48px 0;
+    display: flex;
+    align-items: flex-start;
+    gap: 16px;
 }
 
-.task-rate.low {
-    color: var(--accent-coral);
+.team-note-icon {
+    width: 32px;
+    height: 32px;
+    background: var(--accent-blue);
+    border-radius: 50%;
+    display: flex;
+    align-items: center;
+    justify-content: center;
+    flex-shrink: 0;
+    font-size: 16px;
 }
 
-.task-rate.high {
-    color: var(--accent-mint);
-}
+.team-note-title { font-size: 15px; font-weight: 500; margin-bottom: 6px; }
+.team-note-text { font-size: 14px; color: var(--text-secondary); line-height: 1.6; }
+.highlight-edit { color: var(--accent-blue); font-weight: 600; }
 
-.task-description {
-    font-size: 14px;
-    color: var(--text-secondary);
-}
-
-/* ============================================
-   Findings - Enhanced
-   ============================================ */
+/* Findings */
 .finding {
     background: var(--bg-secondary);
     border-radius: 24px;
     padding: 60px;
-    margin: 40px 0;
+    margin: 48px 0;
 }
 
 .finding-header {
     display: flex;
     align-items: flex-start;
     gap: 24px;
-    margin-bottom: 24px;
+    margin-bottom: 32px;
 }
 
 .finding-number {
     font-family: var(--serif);
-    font-size: 48px;
+    font-size: 56px;
     color: var(--accent-coral);
     line-height: 1;
 }
 
 .finding-title {
     font-family: var(--serif);
-    font-size: 28px;
+    font-size: 32px;
     font-weight: 400;
-    flex: 1;
 }
 
 .finding-overview {
     color: var(--text-secondary);
-    font-size: 16px;
+    font-size: 17px;
     line-height: 1.8;
-    margin-bottom: 40px;
-    padding-bottom: 40px;
+    margin-bottom: 48px;
+    padding-bottom: 48px;
     border-bottom: 1px solid var(--border-subtle);
 }
 
 /* Sub-problems */
 .sub-problem {
-    margin-bottom: 48px;
-    padding-bottom: 48px;
+    margin-bottom: 56px;
+    padding-bottom: 56px;
     border-bottom: 1px solid var(--border-subtle);
 }
 
@@ -654,34 +478,34 @@ section {
 }
 
 .sub-problem-header {
-    font-size: 13px;
+    font-size: 14px;
     text-transform: uppercase;
     letter-spacing: 1.5px;
     color: var(--accent-coral);
-    margin-bottom: 16px;
-    font-weight: 500;
+    margin-bottom: 20px;
+    font-weight: 600;
 }
 
 .sub-problem-text {
     color: var(--text-secondary);
-    font-size: 15px;
+    font-size: 16px;
     line-height: 1.8;
-    margin-bottom: 20px;
+    margin-bottom: 24px;
 }
 
 .sub-problem-quote {
     font-family: var(--serif);
-    font-size: 18px;
+    font-size: 20px;
     font-style: italic;
     color: var(--text-primary);
-    padding: 20px 24px;
+    padding: 24px 28px;
     background: var(--bg-tertiary);
     border-left: 3px solid var(--accent-coral);
-    border-radius: 0 8px 8px 0;
-    margin: 20px 0;
+    border-radius: 0 12px 12px 0;
+    margin: 24px 0;
 }
 
-.sub-problem-quote .quote-attribution {
+.quote-attribution {
     font-family: var(--sans);
     font-size: 13px;
     font-style: normal;
@@ -693,9 +517,9 @@ section {
 .insight-box {
     background: rgba(52, 211, 153, 0.08);
     border: 1px solid rgba(52, 211, 153, 0.2);
-    border-radius: 8px;
+    border-radius: 12px;
     padding: 20px 24px;
-    margin-top: 20px;
+    margin-top: 24px;
 }
 
 .insight-label {
@@ -704,33 +528,34 @@ section {
     letter-spacing: 1.5px;
     color: var(--accent-mint);
     margin-bottom: 8px;
-    font-weight: 500;
+    font-weight: 600;
 }
 
-.insight-text {
-    color: var(--text-secondary);
-    font-size: 14px;
-    line-height: 1.6;
-}
+.insight-text { color: var(--text-secondary); font-size: 15px; line-height: 1.6; }
 
-/* Problem Image */
-.problem-image {
+/* Problem/Recommendation Images */
+.annotated-image {
     margin: 32px 0;
-    border-radius: 12px;
+    border-radius: 16px;
     overflow: hidden;
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-subtle);
+    background: transparent;
 }
 
-.problem-image img {
+.annotated-image img {
     width: 100%;
     display: block;
 }
 
-/* Design Recommendations Section */
+.image-caption {
+    padding: 16px 0;
+    font-size: 13px;
+    color: var(--text-muted);
+}
+
+/* Design Recommendations */
 .design-recommendations {
-    margin-top: 60px;
-    padding-top: 60px;
+    margin-top: 64px;
+    padding-top: 64px;
     border-top: 1px solid var(--border-subtle);
 }
 
@@ -738,47 +563,42 @@ section {
     display: flex;
     align-items: center;
     gap: 16px;
-    margin-bottom: 32px;
+    margin-bottom: 40px;
 }
 
 .recommendations-title {
     font-family: var(--serif);
-    font-size: 24px;
+    font-size: 28px;
     font-weight: 400;
 }
 
 .recommendations-badge {
     background: var(--accent-mint);
     color: var(--bg-primary);
-    font-size: 10px;
+    font-size: 11px;
     text-transform: uppercase;
     letter-spacing: 1px;
-    padding: 4px 10px;
-    border-radius: 4px;
+    padding: 6px 12px;
+    border-radius: 6px;
     font-weight: 600;
 }
 
-.recommendation-item {
-    margin-bottom: 40px;
-}
+.recommendation-block { margin-bottom: 48px; }
 
-.recommendation-item h4 {
-    font-size: 16px;
+.recommendation-block h4 {
+    font-size: 18px;
     font-weight: 500;
-    margin-bottom: 12px;
+    margin-bottom: 16px;
     color: var(--text-primary);
 }
 
-.recommendation-list {
-    list-style: none;
-    margin-bottom: 24px;
-}
+.recommendation-list { list-style: none; margin-bottom: 28px; }
 
 .recommendation-list li {
-    font-size: 14px;
+    font-size: 15px;
     color: var(--text-secondary);
-    padding: 8px 0;
-    padding-left: 24px;
+    padding: 10px 0;
+    padding-left: 28px;
     position: relative;
 }
 
@@ -787,70 +607,10 @@ section {
     position: absolute;
     left: 0;
     color: var(--accent-mint);
+    font-weight: 600;
 }
 
-.recommendation-image {
-    border-radius: 12px;
-    overflow: hidden;
-    background: var(--bg-tertiary);
-    border: 1px solid var(--border-subtle);
-    margin-top: 24px;
-}
-
-.recommendation-image img {
-    width: 100%;
-    display: block;
-}
-
-/* Team contribution note */
-.team-note {
-    background: rgba(37, 99, 235, 0.08);
-    border: 1px solid rgba(37, 99, 235, 0.2);
-    border-radius: 8px;
-    padding: 20px 24px;
-    margin: 40px 0;
-    display: flex;
-    align-items: flex-start;
-    gap: 16px;
-}
-
-.team-note-icon {
-    width: 24px;
-    height: 24px;
-    background: var(--accent-blue);
-    border-radius: 50%;
-    display: flex;
-    align-items: center;
-    justify-content: center;
-    flex-shrink: 0;
-    font-size: 14px;
-}
-
-.team-note-content {
-    flex: 1;
-}
-
-.team-note-title {
-    font-size: 14px;
-    font-weight: 500;
-    color: var(--text-primary);
-    margin-bottom: 4px;
-}
-
-.team-note-text {
-    font-size: 14px;
-    color: var(--text-secondary);
-    line-height: 1.6;
-}
-
-.team-note-text .highlight-edit {
-    color: var(--accent-blue);
-    font-weight: 500;
-}
-
-/* ============================================
-   Conclusion
-   ============================================ */
+/* Conclusion */
 .conclusion-section {
     background: linear-gradient(180deg, var(--bg-secondary) 0%, var(--bg-primary) 100%);
     border-radius: 24px;
@@ -867,23 +627,14 @@ section {
 
 .conclusion-item h4 {
     font-family: var(--serif);
-    font-size: 20px;
+    font-size: 22px;
     margin-bottom: 16px;
 }
 
-.conclusion-item p {
-    color: var(--text-secondary);
-    font-size: 15px;
-}
+.conclusion-item p { color: var(--text-secondary); font-size: 15px; line-height: 1.7; }
 
-/* ============================================
-   Links
-   ============================================ */
-.links-section {
-    display: flex;
-    gap: 24px;
-    margin-top: 60px;
-}
+/* Links */
+.links-section { display: flex; gap: 24px; margin-top: 60px; }
 
 .doc-link {
     display: inline-flex;
@@ -905,44 +656,23 @@ section {
     transform: translateY(-2px);
 }
 
-.doc-link svg {
-    width: 20px;
-    height: 20px;
-}
+.doc-link svg { width: 20px; height: 20px; }
 
-/* ============================================
-   Footer
-   ============================================ */
+/* Footer */
 footer {
     padding: 60px;
     border-top: 1px solid var(--border-subtle);
     text-align: center;
 }
 
-.footer-text {
-    font-size: 14px;
-    color: var(--text-muted);
-}
+.footer-text { font-size: 14px; color: var(--text-muted); }
+.footer-text a { color: var(--text-secondary); text-decoration: none; }
 
-.footer-text a {
-    color: var(--text-secondary);
-    text-decoration: none;
-}
-
-.footer-text a:hover {
-    color: var(--text-primary);
-}
-
-/* ============================================
-   Lightbox for Images
-   ============================================ */
+/* Lightbox */
 .lightbox {
     display: none;
     position: fixed;
-    top: 0;
-    left: 0;
-    right: 0;
-    bottom: 0;
+    inset: 0;
     background: rgba(0,0,0,0.95);
     z-index: 1000;
     padding: 40px;
@@ -951,13 +681,11 @@ footer {
     justify-content: center;
 }
 
-.lightbox.active {
-    display: flex;
-}
+.lightbox.active { display: flex; }
 
 .lightbox img {
-    max-width: 90%;
-    max-height: 90%;
+    max-width: 95%;
+    max-height: 95%;
     object-fit: contain;
     border-radius: 8px;
 }
@@ -972,119 +700,27 @@ footer {
     border: none;
     border-radius: 50%;
     color: white;
-    font-size: 24px;
+    font-size: 28px;
     cursor: pointer;
-    transition: background 0.3s;
 }
 
-.lightbox-close:hover {
-    background: rgba(255,255,255,0.2);
-}
-
-/* ============================================
-   Animations
-   ============================================ */
-@keyframes fadeUp {
-    from {
-        opacity: 0;
-        transform: translateY(30px);
-    }
-    to {
-        opacity: 1;
-        transform: translateY(0);
-    }
-}
-
-.animate-in {
-    animation: fadeUp 0.8s ease-out forwards;
-}
-
-.delay-1 { animation-delay: 0.1s; }
-.delay-2 { animation-delay: 0.2s; }
-.delay-3 { animation-delay: 0.3s; }
-.delay-4 { animation-delay: 0.4s; }
-
-/* ============================================
-   Responsive - Tablet
-   ============================================ */
+/* Responsive */
 @media (max-width: 1024px) {
-    .hero, section {
-        padding-left: 40px;
-        padding-right: 40px;
-    }
-
-    .overview-grid,
-    .role-grid,
-    .conclusion-grid {
-        grid-template-columns: 1fr;
-        gap: 40px;
-    }
-
-    .process-step {
-        grid-template-columns: 1fr;
-        gap: 16px;
-    }
-
-    .participants-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .task-results {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .team-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .affinity-grid {
-        grid-template-columns: repeat(2, 1fr);
-    }
-
-    .affinity-card.full-row {
-        grid-column: span 2;
-    }
+    section, .hero { padding-left: 40px; padding-right: 40px; }
+    .overview-grid, .role-grid, .conclusion-grid { grid-template-columns: 1fr; gap: 40px; }
+    .process-step { grid-template-columns: 1fr; gap: 16px; }
+    .participants-grid, .task-results { grid-template-columns: repeat(2, 1fr); }
+    .affinity-grid { grid-template-columns: 1fr; }
+    .affinity-card.wide { grid-column: span 1; }
 }
 
-/* ============================================
-   Responsive - Mobile
-   ============================================ */
 @media (max-width: 640px) {
-    .hero, section {
-        padding-left: 24px;
-        padding-right: 24px;
-    }
-
-    nav {
-        padding: 16px 24px;
-    }
-
-    .hero-meta {
-        flex-direction: column;
-        gap: 24px;
-    }
-
-    .participants-grid,
-    .task-results,
-    .overview-stats {
-        grid-template-columns: 1fr;
-    }
-
-    .problem-section,
-    .finding,
-    .conclusion-section {
-        padding: 40px 24px;
-    }
-
-    .links-section {
-        flex-direction: column;
-    }
-
-    .affinity-grid {
-        grid-template-columns: 1fr;
-    }
-
-    .affinity-card.full-row {
-        grid-column: span 1;
-    }
+    section, .hero { padding-left: 24px; padding-right: 24px; }
+    nav { padding: 16px 24px; }
+    .participants-grid, .task-results, .overview-stats { grid-template-columns: 1fr; }
+    .finding { padding: 32px 24px; }
+    .conclusion-section { padding: 40px 24px; }
+    .links-section { flex-direction: column; }
+    .team-grid { grid-template-columns: 1fr; }
+    .team-member.highlight { grid-column: span 1; }
 }
